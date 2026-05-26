@@ -1,0 +1,98 @@
+========================================
+   POWER BI PRACTICAL - FORMULA NOTES
+========================================
+
+
+========================================
+ PRODUCT DETAILS - POWER QUERY COLUMNS
+========================================
+
+1. Price_Tier Column:
+---------------------
+if [product_selling_price] > 3 then "High"
+else if [product_selling_price] > 1 then "Mid"
+else "Low"
+
+2. Revenue Column:
+------------------
+[quantity] * [product_selling_price]
+
+3. Cost Column:
+---------------
+[quantity] * [product_cost_price]
+
+
+========================================
+ PRODUCT DETAILS - DAX MEASURES
+========================================
+
+Quantity Sold = SUM(Products[quantity])
+
+Total Revenue = SUM(Products[Revenue])
+
+Total Cost = SUM(Products[Cost])
+
+Total Profit = [Total Revenue] - [Total Cost]
+
+Profit Margin = DIVIDE([Total Profit], [Total Revenue])
+
+
+========================================
+ PIZZA SALES - POWER QUERY COLUMNS
+========================================
+
+1. total_price Column:
+----------------------
+[quantity] * [unit_price]
+
+
+========================================
+ PIZZA SALES - DAX MEASURES
+========================================
+
+Total Revenue = SUM(Pizza_Sales[total_price])
+
+Total Pizza Sold = SUM(Pizza_Sales[quantity])
+
+Total Orders = DISTINCTCOUNT(Pizza_Sales[order_id])
+
+
+========================================
+ GAUGE VALUES
+========================================
+
+Product Details Gauge:
+  - Max Value  = 6000
+  - Target     = 4000
+
+Pizza Sales Gauge:
+  - Target     = 60,000
+
+
+========================================
+ REPLACE VALUES (Power Query)
+========================================
+
+Country Fix (Product Details):
+  United States  -->  USA
+  United Kingdom -->  UK
+
+Pizza Size Fix:
+  S   -->  Regular
+  L   -->  Large
+  XL  -->  X-Large
+
+Null Fix:
+  null  -->  0   (recyclable column)
+  null  -->  1   (quantity column - Pizza)
+
+
+
+
+VAT Amount = Price * 13 / 100
+
+VAT Inclusive Price = Price * 1.13
+
+
+
+========================================
